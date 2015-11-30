@@ -10,12 +10,13 @@ class downloader(threading.Thread):
 
 	def run(self):
 		while True:
+			print "in downloader run()"
 			url = self.q.get()
 			self.download(url)
 			self.q.task_done()
 
 	def download(self, url):
-		req = urllib.open(url)
+		req = urllib.urlopen(url)
 		if (req.getcode() == 200):
 			print "[+] Successfully downloaded a file: %s"%url
 		else:
