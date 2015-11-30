@@ -10,8 +10,8 @@ class downloader(threading.Thread):
 
 	def run(self):
 		while True:
-			print "in downloader run()"
 			url = self.q.get()
+			print "[--]Debug: URL: "%url
 			self.download(url)
 			self.q.task_done()
 
